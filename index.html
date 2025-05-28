@@ -31,7 +31,7 @@
                     </button>
                     <input type="range" class="volume-bar" min="0" max="1" step="0.1" value="1">
                 </div>
-                <audio id="audio-player" src="musica/anymusic-win.exe" type="audio/mp3"></audio>
+                <audio id="audio-player" src="musica/Harry James _ His Orchestra - It_s Been A Long_ Long Time (Audio)(MP3_320K).mp3" type="audio/mp3"></audio>
             </div>
             <div class="inside_text">
                 <h4>...Desde que você entrou na minha vida, tudo ficou mais bonito. Meu coração é seu, para sempre!..</h4>
@@ -48,5 +48,59 @@
     </div>
     
         <script src="scripts.js"></script>
+        <script>
+    const audio = document.getElementById("audio-player");
+    const playButton = document.querySelector(".play-button");
+    const currentTimeElem = document.querySelector(".current-time");
+    const seekBar = document.querySelector(".seek-bar");
+    const volumeBar = document.querySelector(".volume-bar");
+    const volumeIcon = document.getElementById("volume-icon");
+
+    // Play/Pause toggle
+    playButton.addEventListener("click", () => {
+        if (audio.paused) {
+            audio.play();
+            playButton.querySelector(".icon").textContent = "⏸️";
+        } else {
+            audio.pause();
+            playButton.querySelector(".icon").textContent = "▶️";
+        }
+    });
+
+    // Atualizar barra de progresso
+    audio.addEventListener("timeupdate", () => {
+        seekBar.value = (audio.currentTime / audio.duration) * 100 || 0;
+        currentTimeElem.textContent = formatTime(audio.currentTime);
+    });
+
+    // Buscar tempo da música manualmente
+    seekBar.addEventListener("input", () => {
+        const seekTo = (seekBar.value / 100) * audio.duration;
+        audio.currentTime = seekTo;
+    });
+
+    // Controle de volume
+    volumeBar.addEventListener("input", () => {
+        audio.volume = volumeBar.value;
+        updateVolumeIcon(audio.volume);
+    });
+
+    function updateVolumeIcon(volume) {
+        if (volume === 0) {
+            volumeIcon.textContent = "🔇";
+        } else if (volume < 0.5) {
+            volumeIcon.textContent = "🔉";
+        } else {
+            volumeIcon.textContent = "🔊";
+        }
+    }
+
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
+    }
+</script>
+
 </body>
 </html>
