@@ -5,93 +5,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valentines Day 2024</title>
     <link rel="stylesheet" href="estilo.css">
+    <link rel="icon" href="favicon.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="valentines_card">
+    <div class="valentines_card card-closed">
         <div class="front_card">
-            <img src="vday.png" class="front_img">
+            <img src="vday.png" class="front_img" alt="Imagem de capa do cartão">
             <div class="front_text">
-                <h3>Para minha amada...</h3>
+                <h1>Para minha amada...</h1>
             </div>    
         </div>
         <div class="inside_card">
-            <img src="baixados (2).jfif" class="inside_img">
-            <div class="audio-player">
-                <button class="play-button">
+            <img src="baixados (2).jfif" class="inside_img" alt="Imagem interna do cartão">
+            <div class="audio-player" role="region" aria-label="Player de áudio">
+                <button class="play-button" aria-label="Tocar ou pausar áudio">
                     <span class="icon">▶️</span>
                 </button>
                 <div class="time-container">
                     <div class="current-time">0:00</div>
                 </div>
-                <input type="range" class="seek-bar" value="0">
+                <input type="range" class="seek-bar" value="0" aria-label="Linha do tempo do áudio">
                 <div class="volume-container">
-                    <button class="volume-button">
+                    <button class="volume-button" aria-label="Controle de volume">
                         <span class="icon" id="volume-icon">🔊</span>
                     </button>
-                    <input type="range" class="volume-bar" min="0" max="1" step="0.1" value="1">
+                    <input type="range" class="volume-bar" min="0" max="1" step="0.1" value="1" aria-label="Volume">
                 </div>
                 <audio id="audio-player" src="Harry James _ His Orchestra - It_s Been A Long_ Long Time (Audio)(MP3_320K).mp3" type="audio/mp3"></audio>
             </div>
             <div class="inside_text">
-                <h4>...Desde que você entrou na minha vida, tudo ficou mais bonito. Meu coração é seu, para sempre!..</h4>
-                <h3>Feliz dia dos Namorados meu Amor, Nosso amor é lindo, Eu te amo.</h3>
+                <h2>...Desde que você entrou na minha vida, tudo ficou mais bonito.</h2>
+                <h3>Meu coração é seu, para sempre!..</h3>
+                <h3>Feliz dia dos Namorados meu Amor. Nosso amor é lindo. Eu te amo.</h3>
             </div>
         </div>
-        <img src="baixados (3).jfif" class="additional_image"> 
+        <img src="baixados (3).jfif" class="additional_image" alt="Imagem adicional decorativa"> 
     </div>
 
     <div class="toggle-container">
-        <button class="toggle-dark-mode">
+        <button class="toggle-dark-mode" aria-label="Alternar modo escuro">
             <span class="icon">🌙</span>
         </button>
     </div>
+
     <div class="close-card-btn" id="closeCardBtn">✕ Fechar Carta</div>
-    
+
+    <audio id="open-sound" src="open.mp3" preload="auto"></audio>
+    <audio id="close-sound" src="close.mp3" preload="auto"></audio>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const card = document.querySelector('.valentines_card');
             const closeBtn = document.getElementById('closeCardBtn');
             const toggleDarkMode = document.querySelector('.toggle-dark-mode');
-            
-            // Função para abrir a carta
+            const openSound = document.getElementById('open-sound');
+            const closeSound = document.getElementById('close-sound');
+
             function openCard() {
                 card.classList.add('card-open');
                 card.classList.remove('card-closed');
                 closeBtn.style.display = 'block';
+                openSound.play();
             }
-            
-            // Função para fechar a carta
+
             function closeCard() {
                 card.classList.add('card-closed');
                 card.classList.remove('card-open');
                 closeBtn.style.display = 'none';
+                closeSound.play();
             }
-            
-            // Alternar entre abrir/fechar a carta
+
             card.addEventListener('click', function(e) {
-                // Impede que o clique no player de áudio abra/fecha a carta
                 if (e.target.closest('.audio-player')) return;
-                
+
                 if (card.classList.contains('card-open')) {
                     closeCard();
                 } else {
                     openCard();
                 }
             });
-            
-            // Fechar ao clicar no botão
+
             closeBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
                 closeCard();
             });
-            
-            // Dark Mode Toggle
+
             toggleDarkMode.addEventListener('click', function() {
                 document.body.classList.toggle('dark-mode');
             });
-            
-            // Player de Áudio
+
             const audio = document.getElementById("audio-player");
             const playButton = document.querySelector(".play-button");
             const currentTimeElem = document.querySelector(".current-time");
