@@ -101,6 +101,40 @@
         const secs = Math.floor(seconds % 60);
         return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
     }
+    // Adicione isto ao seu scripts.js ou dentro de uma tag <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const card = document.querySelector('.valentines_card');
+    const closeBtn = document.getElementById('closeCardBtn');
+    
+    // Função para fechar a carta
+    function closeCard() {
+        card.classList.remove('card-open');
+        card.classList.add('card-closed');
+        closeBtn.style.display = 'none';
+        // Resetar a carta para o estado fechado
+        const frontCard = document.querySelector('.front_card');
+        frontCard.style.transform = 'rotateY(0deg)';
+    }
+    
+    // Adicionar evento de clique ao botão de fechar
+    closeBtn.addEventListener('click', closeCard);
+    
+    // Adicionar classe quando a carta é aberta (pode ser pelo hover ou toque)
+    card.addEventListener('click', function() {
+        if (!card.classList.contains('card-open')) {
+            card.classList.add('card-open');
+            closeBtn.style.display = 'block';
+        }
+    });
+    
+    // Para dispositivos móveis, fechar ao tocar fora
+    document.addEventListener('click', function(e) {
+        if (!card.contains(e.target) && !closeBtn.contains(e.target) && 
+            card.classList.contains('card-open')) {
+            closeCard();
+        }
+    });
+});
 </script>
 
 </body>
