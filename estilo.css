@@ -2,18 +2,20 @@
 * {
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
+    box-sizing: border-box;
 }
 
 body {
     margin: 0;
-    min-height: 100vh;
-    background: linear-gradient(to bottom, #ffc0cb, #ff69b4);
+    height: 100vh;
+    background: #ffc0cb;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Montserrat', sans-serif, Arial;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
     transition: background 0.5s ease;
-    overflow-x: hidden;
+    touch-action: manipulation;
 }
 
 /* Estilos do Cartão */
@@ -21,10 +23,9 @@ body {
     position: relative;
     cursor: pointer;
     transform-style: preserve-3d;
-    transform: perspective(1000px);
-    transition: transform 1.5s ease-in-out;
-    width: 100%;
-    max-width: 360px;
+    transform: perspective(2500px);
+    transition: transform 1s;
+    width: 360px;
     margin: 0 auto;
 }
 
@@ -37,10 +38,8 @@ body {
     background-color: whitesmoke;
     text-align: center;
     box-shadow: 0 24px 40px -8px #ff1493;
-    width: 100%;
-    max-width: 340px;
-    height: auto;
-    min-height: 500px;
+    width: 360px;
+    height: 600px;
     transition: transform 1s ease;
 }
 
@@ -53,20 +52,20 @@ body {
 
 /* Imagens do Cartão */
 .front_img {
-    width: 100%;
-    max-width: 280px;
-    height: auto;
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
-    margin: 20px auto 0 auto;
+    width: 380px;
+    margin: 0 auto;
+    margin-top: 60px;
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 0.5s ease;
 }
 
 .inside_img {
-    width: 100%;
-    max-width: 220px;
-    margin: 20px auto;
+    width: 200px;
+    margin: 0 auto;
+    margin-top: 50px;
     position: relative;
 }
 
@@ -86,8 +85,8 @@ body {
 /* Textos do Cartão */
 .front_text {
     color: #A60657;
-    font-size: 24px;
-    margin-top: 20px;
+    font-size: 20px;
+    margin-top: 485px;
     transition: opacity 0.5s ease;
 }
 
@@ -95,7 +94,6 @@ body {
     color: #A60657;
     font-size: 19px;
     padding: 0 20px;
-    margin-top: 20px;
 }
 
 /* Efeitos de Hover e Estados */
@@ -105,23 +103,34 @@ body {
 }
 
 .valentines_card:hover .front_text,
-.valentines_card.card-open .front_text,
+.valentines_card.card-open .front_text {
+    display: none;
+}
+
 .valentines_card:hover .front_img,
-.valentines_card.card-open .front_img,
+.valentines_card.card-open .front_img {
+    display: none;
+}
+
 .valentines_card:hover .additional_image,
 .valentines_card.card-open .additional_image {
-    display: none;
     opacity: 0;
 }
 
+/* Estados quando a carta está fechada */
 .valentines_card.card-closed .front_card {
     transform: rotateY(0deg);
 }
 
-.valentines_card.card-closed .front_text,
-.valentines_card.card-closed .front_img,
-.valentines_card.card-closed .additional_image {
+.valentines_card.card-closed .front_text {
     display: block;
+}
+
+.valentines_card.card-closed .front_img {
+    display: block;
+}
+
+.valentines_card.card-closed .additional_image {
     opacity: 1;
 }
 
@@ -151,6 +160,7 @@ body {
     outline: none;
     min-width: 44px;
     min-height: 44px;
+    touch-action: manipulation;
 }
 
 .time-container {
@@ -215,6 +225,8 @@ body {
     padding: 15px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    min-width: 44px;
+    min-height: 44px;
 }
 
 .toggle-dark-mode:hover {
@@ -242,6 +254,7 @@ body {
     font-weight: bold;
     border: none;
     transition: all 0.3s ease;
+    min-height: 44px;
 }
 
 .close-card-btn:hover {
@@ -255,7 +268,8 @@ body {
 
 /* Dark Mode */
 body.dark-mode {
-    background: linear-gradient(to bottom, #2a0013, #49010a);
+    background: #49010a;
+    color-scheme: dark;
 }
 
 .dark-mode .front_text,
@@ -269,69 +283,146 @@ body.dark-mode {
     background: #a20137;
 }
 
-/* Acessibilidade */
-button, input[type="range"] {
-    min-width: 44px;
-    min-height: 44px;
+.dark-mode .front_card, 
+.dark-mode .inside_card {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
 }
 
-/* Responsividade */
+/* ========== RESPONSIVIDADE PARA CELULAR ========== */
 @media (max-width: 768px) {
     body {
-        padding: 20px 10px;
-        overflow-y: auto;
+        height: auto;
+        min-height: 100vh;
+        padding: 20px 0;
+        overflow: auto;
     }
 
     .valentines_card {
-        width: 100%;
-        max-width: 100%;
-        transform: none;
+        width: 95vw;
+        height: auto;
+        min-height: 80vh;
         perspective: none;
-        cursor: default;
-    }
-
-    .front_card, .inside_card {
-        width: 100%;
-        max-width: 340px;
-        margin: 10px auto;
-        padding: 15px;
-        transform-origin: center;
-    }
-
-    .front_img, .inside_img, .additional_image {
-        position: relative;
-        width: 80%;
-        max-width: 280px;
-        margin: 20px auto;
-        transform: none;
-    }
-
-    .additional_image {
-        box-shadow: 0 3px 10px rgba(0,0,0,0.4);
-        border-radius: 12px;
-    }
-}
-
-@media (hover: none) {
-    .valentines_card {
         transform-style: flat;
     }
 
-    .front_card {
-        transition: transform 1s ease;
+    .front_card, .inside_card {
+        width: 95%;
+        height: auto;
+        min-height: 70vh;
+        padding: 15px;
+        margin: 10px auto;
+    }
+
+    .front_img {
+        width: 90%;
+        max-width: 300px;
+        position: relative;
+        margin: 20px auto;
+        top: auto;
+        left: auto;
+        transform: none;
+    }
+
+    .inside_img {
+        width: 70%;
+        max-width: 200px;
+        margin: 20px auto;
+    }
+
+    .additional_image {
+        position: relative;
+        width: 40%;
+        max-width: 150px;
+        margin: 15px auto;
+        left: auto;
+        top: auto;
+        transform: none;
+        display: block;
+    }
+
+    .front_text {
+        margin-top: 30px;
+        font-size: 1.3rem;
+    }
+
+    .inside_text {
+        font-size: 1rem;
+        padding: 0 15px;
+    }
+
+    .audio-player {
+        flex-direction: column;
+        padding: 10px;
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    .time-container {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .seek-bar {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .volume-container {
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .close-card-btn {
+        padding: 12px 24px;
+        font-size: 16px;
+        bottom: 30px;
+    }
+
+    .toggle-container {
+        top: 15px;
+        right: 15px;
+    }
+
+    /* Melhor feedback para toque */
+    button {
+        transition: transform 0.1s ease;
+    }
+
+    button:active {
+        transform: scale(0.95);
+        opacity: 0.9;
     }
 }
 
+@media (max-width: 360px) {
+    .front_card, .inside_card {
+        min-height: 65vh;
+    }
+
+    .front_text {
+        font-size: 1.1rem;
+    }
+
+    .inside_text {
+        font-size: 0.9rem;
+    }
+
+    .close-card-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+/* Prevenir zoom em inputs em iOS */
 @supports (-webkit-touch-callout: none) {
-    .valentines_card {
-        -webkit-overflow-scrolling: touch;
-    }
-
-    input[type="range"] {
-        -webkit-appearance: none;
+    input, select, textarea {
+        font-size: 16px !important;
     }
 }
 
+/* Garantir que o áudio não apareça em mobile */
 audio {
     display: none !important;
 }
