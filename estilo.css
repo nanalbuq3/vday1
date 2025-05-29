@@ -1,4 +1,3 @@
-/* ===== SEU CSS ORIGINAL (INTACTO) ===== */
 * {
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
@@ -22,7 +21,7 @@ body {
     transform-style: preserve-3d;
     transform: perspective(2500px);
     transition: transform 4s;
-    width: 360px;
+    width: 144px; /* Original: 360px */
     margin: 0 auto;
 }
 
@@ -30,13 +29,13 @@ body {
     position: relative;
     overflow: hidden;
     transform-origin: left;
-    margin: 20px auto;
-    padding: 16px;
+    margin: 6px auto; /* Original: 20px */
+    padding: 8px; /* Original: 16px */
     background-color: whitesmoke;
     text-align: center;
-    box-shadow: 0 24px 40px -8px #ff1493;
-    width: 360px;
-    height: 600px;
+    box-shadow: 0 14px 24px -5px #ff1493; /* Original: 0 24px 40px -8px */
+    width: 144px; /* Original: 360px */
+    height: 240px; /* Original: 600px */
     transition: transform 1s ease;
 }
 
@@ -48,47 +47,47 @@ body {
 }
 
 .front_img {
-    width: 380px;
+    width: 152px; /* Original: 380px */
     margin: 0 auto;
-    margin-top: 60px;
+    margin-top: 24px; /* Original: 60px */
     position: absolute;
-    top: 80px;
+    top: 32px; /* Original: 80px */
     left: 50%;
     transform: translateX(-50%);
     transition: opacity 0.5s ease;
 }
 
 .inside_img {
-    width: 200px;
+    width: 60px; /* Original: 200px */
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 20px; /* Original: 50px */
     position: relative;
 }
 
 .additional_image {
     position: absolute;
-    left: 119px;
+    left: 48px; /* Original: 119px */
     top: 17%;
     transform: translateY(-40%);
-    width: 150px;
+    width: 60px; /* Original: 150px */
     height: auto;
-    border-radius: 16px;
-    box-shadow: 0px 5px 13px rgba(0, 0, 0, 0.9);
+    border-radius: 8px; /* Original: 16px */
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.9); /* Original: 0px 5px 13px */
     object-fit: cover;
     transition: opacity 0.5s ease;
 }
 
 .front_text {
     color: #A60657;
-    font-size: 10px;
-    margin-top: 485px;
+    font-size: 6px; /* Original: 10px */
+    margin-top: 194px; /* Original: 485px */
     transition: opacity 0.5s ease;
 }
 
 .inside_text {
     color: #A60657;
-    font-size: 9px;
-    padding: 0 10px;
+    font-size: 5px; /* Original: 9px */
+    padding: 0 5px; /* Original: 10px */
 }
 
 .valentines_card:hover .front_card,
@@ -136,44 +135,44 @@ body {
     align-items: center;
     justify-content: space-between;
     background: #fff;
-    padding: 6px 19px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 4px 12px; /* Original: 6px 19px */
+    border-radius: 6px; /* Original: 10px */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Original: 0 4px 8px */
     width: 90%;
-    max-width: 300px;
+    max-width: 480px; /* Original: 300px */
     margin: 0 auto;
 }
 
 .play-button, .volume-button {
     background: none;
     border: none;
-    font-size: 10px;
+    font-size: 6px; /* Original: 10px */
     cursor: pointer;
     outline: none;
-    min-width: 22px;
-    min-height: 422px;
+    min-width: 14px; /* Original: 22px */
+    min-height: 153px; /* Original: 422px */
 }
 
 .time-container {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 3px; /* Original: 5px */
     flex: 1;
-    margin: 0 10px;
+    margin: 0 6px; /* Original: 10px */
     color: #333;
     font-weight: 300;
 }
 
 .current-time, .total-time {
-    font-size: 13px;
+    font-size: 8px; /* Original: 13px */
 }
 
 .seek-bar, .volume-bar {
     appearance: none;
     width: 30%;
-    height: 5px;
+    height: 3px; /* Original: 5px */
     background: #ddd;
-    border-radius: 5px;
+    border-radius: 3px; /* Original: 5px */
     outline: none;
     transition: background 0.3s;
     cursor: pointer;
@@ -182,8 +181,8 @@ body {
 .seek-bar::-webkit-slider-thumb, 
 .volume-bar::-webkit-slider-thumb {
     appearance: none;
-    width: 15px;
-    height: 15px;
+    width: 9px; /* Original: 15px */
+    height: 9px; /* Original: 15px */
     border-radius: 50%;
     background: #ff1493;
     cursor: pointer;
@@ -192,19 +191,19 @@ body {
 .volume-container {
     display: flex;
     align-items: center;
-    gap: 10px;
-    max-width: 100px;
+    gap: 6px; /* Original: 10px */
+    max-width: 60px; /* Original: 100px */
 }
 
 .icon {
-    font-size: 20px;
+    font-size: 12px; /* Original: 20px */
     color: #ff1493;
 }
 
 .toggle-container {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 12px; /* Original: 20px */
+    right: 12px; /* Original: 20px */
     z-index: 100;
 }
 
@@ -212,7 +211,7 @@ body {
     background-color: #f07bd3;
     border: none;
     border-radius: 50%;
-    padding: 15px;
+    padding: 9px; /* Original: 15px */
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
@@ -227,20 +226,21 @@ body {
 
 .close-card-btn {
     position: fixed;
-    bottom: 20px;
+    bottom: 12px; /* Original: 20px */
     left: 50%;
     transform: translateX(-50%);
     background-color: #ff1493;
     color: white;
-    padding: 10px 20px;
-    border-radius: 25px;
+    padding: 6px 12px; /* Original: 10px 20px */
+    border-radius: 15px; /* Original: 25px */
     cursor: pointer;
     z-index: 1000;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Original: 0 4px 8px */
     display: none;
     font-weight: bold;
     border: none;
     transition: all 0.3s ease;
+    font-size: 10px; /* Original: não especificado */
 }
 
 .close-card-btn:hover {
@@ -267,12 +267,11 @@ body.dark-mode {
     background: #a20137;
 }
 
-/* ===== PARTE NOVA (APENAS AJUSTES MOBILE) ===== */
 @media (max-width: 768px) {
     body {
         height: auto !important;
         min-height: 100vh !important;
-        padding: 20px 0 !important;
+        padding: 12px 0 !important; /* Original: 20px */
         touch-action: manipulation;
     }
 
@@ -285,15 +284,15 @@ body.dark-mode {
     .front_card, .inside_card {
         width: 95% !important;
         height: auto !important;
-        min-height: 70vh !important;
-        padding: 15px !important;
+        min-height: 36vh !important; /* Original: 60vh */
+        padding: 9px !important; /* Original: 15px */
     }
 
     .front_img {
         width: 85% !important;
-        max-width: 280px !important;
+        max-width: 168px !important; /* Original: 280px */
         position: relative !important;
-        margin: 20px auto !important;
+        margin: 12px auto !important; /* Original: 20px */
         top: auto !important;
         left: auto !important;
         transform: none !important;
@@ -301,14 +300,14 @@ body.dark-mode {
 
     .inside_img {
         width: 70% !important;
-        max-width: 200px !important;
-        margin: 20px auto !important;
+        max-width: 120px !important; /* Original: 200px */
+        margin: 12px auto !important; /* Original: 20px */
     }
 
     .additional_image {
         position: relative !important;
-        width: 120px !important;
-        margin: 15px auto !important;
+        width: 72px !important; /* Original: 120px */
+        margin: 9px auto !important; /* Original: 15px */
         left: auto !important;
         top: auto !important;
         transform: none !important;
@@ -316,34 +315,33 @@ body.dark-mode {
     }
 
     .front_text {
-        margin-top: 30px !important;
-        font-size: 1.3rem !important;
+        margin-top: 18px !important; /* Original: 30px */
+        font-size: 0.66rem !important; /* Original: 1.1rem */
     }
 
     .inside_text {
-        font-size: 1rem !important;
-        padding: 0 15px !important;
+        font-size: 0.54rem !important; /* Original: 0.9rem */
+        padding: 0 9px !important; /* Original: 15px */
     }
 
     .audio-player {
         flex-direction: column !important;
-        padding: 12px !important;
+        padding: 7px !important; /* Original: 12px */
         width: 95% !important;
     }
 
     .seek-bar {
         width: 100% !important;
-        margin: 10px 0 !important;
+        margin: 6px 0 !important; /* Original: 10px */
     }
 
     .close-card-btn {
-        padding: 12px 24px !important;
-        font-size: 16px !important;
-        bottom: 30px !important;
+        padding: 7px 14px !important; /* Original: 12px 24px */
+        font-size: 10px !important; /* Original: 16px */
+        bottom: 18px !important; /* Original: 30px */
     }
 }
 
-/* Correção para iOS */
 @supports (-webkit-touch-callout: none) {
     .valentines_card {
         -webkit-overflow-scrolling: touch;
