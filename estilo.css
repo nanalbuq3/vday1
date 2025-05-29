@@ -169,3 +169,66 @@
 audio {
     display: none !important;
 }
+.close-card-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ff1493;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none; /* Inicialmente escondido */
+    font-weight: bold;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.close-card-btn:hover {
+    background-color: #d3127a;
+    transform: translateX(-50%) scale(1.05);
+}
+
+/* Mostrar o botão apenas quando a carta estiver aberta */
+.card-open .close-card-btn {
+    display: block;
+}
+
+/* Esconder o botão em telas muito pequenas quando não for necessário */
+@media (max-width: 480px) {
+    .close-card-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+/* Adicione estas regras ao seu CSS existente */
+.valentines_card.card-open .front_card {
+    transform: rotateY(-160deg);
+}
+
+.valentines_card.card-open .front_text {
+    display: none;
+}
+
+.valentines_card.card-open .front_img {
+    display: none;
+}
+
+.valentines_card.card-open .additional_image {
+    opacity: 0;
+}
+
+/* Para dispositivos móveis, substitua o hover por classes */
+@media (max-width: 768px) {
+    .valentines_card:hover .front_card,
+    .valentines_card:active .front_card {
+        transform: rotateY(0deg);
+    }
+    
+    .valentines_card.card-open .front_card {
+        transform: rotateY(-160deg);
+    }
+}
