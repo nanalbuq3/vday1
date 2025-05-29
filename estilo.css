@@ -6,14 +6,14 @@
 
 body {
     margin: 0;
-    height: 100vh;
-    background: #ffc0cb;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #ffc0cb, #ff69b4);
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
     font-family: 'Montserrat', sans-serif, Arial;
     transition: background 0.5s ease;
+    overflow-x: hidden;
 }
 
 /* Estilos do Cartão */
@@ -21,9 +21,10 @@ body {
     position: relative;
     cursor: pointer;
     transform-style: preserve-3d;
-    transform: perspective(2500px);
+    transform: perspective(1000px);
     transition: transform 1.5s ease-in-out;
-    width: 360px;
+    width: 100%;
+    max-width: 360px;
     margin: 0 auto;
 }
 
@@ -36,8 +37,10 @@ body {
     background-color: whitesmoke;
     text-align: center;
     box-shadow: 0 24px 40px -8px #ff1493;
-    width: 360px;
-    height: 600px;
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+    min-height: 500px;
     transition: transform 1s ease;
 }
 
@@ -50,20 +53,20 @@ body {
 
 /* Imagens do Cartão */
 .front_img {
-    width: 380px;
-    margin: 0 auto;
-    margin-top: 60px;
-    position: absolute;
-    top: 80px;
-    left: 50%;
-    transform: translateX(-50%);
-    transition: opacity 0.5s ease;
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin: 20px auto 0 auto;
 }
 
 .inside_img {
-    width: 200px;
-    margin: 0 auto;
-    margin-top: 50px;
+    width: 100%;
+    max-width: 220px;
+    margin: 20px auto;
     position: relative;
 }
 
@@ -84,14 +87,15 @@ body {
 .front_text {
     color: #A60657;
     font-size: 24px;
-    margin-top: 485px;
+    margin-top: 20px;
     transition: opacity 0.5s ease;
 }
 
 .inside_text {
     color: #A60657;
-    font-size: 10px;
+    font-size: 19px;
     padding: 0 20px;
+    margin-top: 20px;
 }
 
 /* Efeitos de Hover e Estados */
@@ -251,7 +255,7 @@ body {
 
 /* Dark Mode */
 body.dark-mode {
-    background: #49010a;
+    background: linear-gradient(to bottom, #2a0013, #49010a);
 }
 
 .dark-mode .front_text,
@@ -265,65 +269,21 @@ body.dark-mode {
     background: #a20137;
 }
 
-/* Melhorias de acessibilidade */
+/* Acessibilidade */
 button, input[type="range"] {
     min-width: 44px;
     min-height: 44px;
 }
 
 /* Responsividade */
-@media (max-width: 480px) {
-    .front_img {
-        width: 280px;
-        top: 85px;
-    }
-
-    .inside_img {
-        width: 220px;
-        margin-top: 40px;
-    }
-
-    .front_card, .inside_card {
-        width: 300px;
-        height: 500px;
-    }
-
-    .front_text {
-        font-size: 10px;
-        margin-top: 420px;
-    }
-
-    .inside_text {
-        font-size: 10px;
-    }
-
-    .additional_image {
-        left: 100px;
-        width: 130px;
-    }
-
-    .audio-player {
-        padding: 6px 12px;
-        width: 90%;
-        max-width: 320px;
-    }
-
-    .icon {
-        font-size: 30px;
-    }
-}
-
 @media (max-width: 768px) {
     body {
-        height: auto;
-        min-height: 100vh;
-        padding: 20px 0;
-        overflow: auto;
-        touch-action: manipulation;
+        padding: 20px 10px;
+        overflow-y: auto;
     }
 
     .valentines_card {
-        width: 95%;
+        width: 100%;
         max-width: 100%;
         transform: none;
         perspective: none;
@@ -331,9 +291,8 @@ button, input[type="range"] {
     }
 
     .front_card, .inside_card {
-        width: 90%;
-        height: auto;
-        min-height: 500px;
+        width: 100%;
+        max-width: 340px;
         margin: 10px auto;
         padding: 15px;
         transform-origin: center;
@@ -342,8 +301,14 @@ button, input[type="range"] {
     .front_img, .inside_img, .additional_image {
         position: relative;
         width: 80%;
+        max-width: 280px;
         margin: 20px auto;
         transform: none;
+    }
+
+    .additional_image {
+        box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+        border-radius: 12px;
     }
 }
 
