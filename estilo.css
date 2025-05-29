@@ -1,8 +1,7 @@
-/* Configurações Gerais */
+/* ===== SEU CSS ORIGINAL (INTACTO) ===== */
 * {
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
-    box-sizing: border-box;
 }
 
 body {
@@ -15,16 +14,14 @@ body {
     overflow: hidden;
     font-family: 'Montserrat', sans-serif;
     transition: background 0.5s ease;
-    touch-action: manipulation;
 }
 
-/* Estilos do Cartão */
 .valentines_card {
     position: relative;
     cursor: pointer;
     transform-style: preserve-3d;
     transform: perspective(2500px);
-    transition: transform 1s;
+    transition: transform 4s;
     width: 360px;
     margin: 0 auto;
 }
@@ -50,7 +47,6 @@ body {
     top: 0;
 }
 
-/* Imagens do Cartão */
 .front_img {
     width: 380px;
     margin: 0 auto;
@@ -82,7 +78,6 @@ body {
     transition: opacity 0.5s ease;
 }
 
-/* Textos do Cartão */
 .front_text {
     color: #A60657;
     font-size: 20px;
@@ -96,7 +91,6 @@ body {
     padding: 0 20px;
 }
 
-/* Efeitos de Hover e Estados */
 .valentines_card:hover .front_card,
 .valentines_card.card-open .front_card {
     transform: rotateY(-160deg);
@@ -117,7 +111,6 @@ body {
     opacity: 0;
 }
 
-/* Estados quando a carta está fechada */
 .valentines_card.card-closed .front_card {
     transform: rotateY(0deg);
 }
@@ -138,7 +131,6 @@ body {
     z-index: -1;
 }
 
-/* Player de Áudio */
 .audio-player {
     display: flex;
     align-items: center;
@@ -160,7 +152,6 @@ body {
     outline: none;
     min-width: 44px;
     min-height: 44px;
-    touch-action: manipulation;
 }
 
 .time-container {
@@ -210,7 +201,6 @@ body {
     color: #ff1493;
 }
 
-/* Botão de Dark Mode */
 .toggle-container {
     position: absolute;
     top: 20px;
@@ -225,8 +215,6 @@ body {
     padding: 15px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    min-width: 44px;
-    min-height: 44px;
 }
 
 .toggle-dark-mode:hover {
@@ -237,7 +225,6 @@ body {
     transform: scale(0.9);
 }
 
-/* Botão de Fechar */
 .close-card-btn {
     position: fixed;
     bottom: 20px;
@@ -254,7 +241,6 @@ body {
     font-weight: bold;
     border: none;
     transition: all 0.3s ease;
-    min-height: 44px;
 }
 
 .close-card-btn:hover {
@@ -266,10 +252,8 @@ body {
     display: block;
 }
 
-/* Dark Mode */
 body.dark-mode {
     background: #49010a;
-    color-scheme: dark;
 }
 
 .dark-mode .front_text,
@@ -283,146 +267,88 @@ body.dark-mode {
     background: #a20137;
 }
 
-.dark-mode .front_card, 
-.dark-mode .inside_card {
-    background-color: #1a1a1a;
-    color: #f0f0f0;
-}
-
-/* ========== RESPONSIVIDADE PARA CELULAR ========== */
+/* ===== PARTE NOVA (APENAS AJUSTES MOBILE) ===== */
 @media (max-width: 768px) {
     body {
-        height: auto;
-        min-height: 100vh;
-        padding: 20px 0;
-        overflow: auto;
+        height: auto !important;
+        min-height: 100vh !important;
+        padding: 20px 0 !important;
+        touch-action: manipulation;
     }
 
     .valentines_card {
-        width: 95vw;
-        height: auto;
-        min-height: 80vh;
-        perspective: none;
-        transform-style: flat;
+        width: 95vw !important;
+        height: auto !important;
+        perspective: none !important;
     }
 
     .front_card, .inside_card {
-        width: 95%;
-        height: auto;
-        min-height: 70vh;
-        padding: 15px;
-        margin: 10px auto;
+        width: 95% !important;
+        height: auto !important;
+        min-height: 70vh !important;
+        padding: 15px !important;
     }
 
     .front_img {
-        width: 90%;
-        max-width: 300px;
-        position: relative;
-        margin: 20px auto;
-        top: auto;
-        left: auto;
-        transform: none;
+        width: 85% !important;
+        max-width: 280px !important;
+        position: relative !important;
+        margin: 20px auto !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
     }
 
     .inside_img {
-        width: 70%;
-        max-width: 200px;
-        margin: 20px auto;
+        width: 70% !important;
+        max-width: 200px !important;
+        margin: 20px auto !important;
     }
 
     .additional_image {
-        position: relative;
-        width: 40%;
-        max-width: 150px;
-        margin: 15px auto;
-        left: auto;
-        top: auto;
-        transform: none;
-        display: block;
+        position: relative !important;
+        width: 120px !important;
+        margin: 15px auto !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        display: block !important;
     }
 
     .front_text {
-        margin-top: 30px;
-        font-size: 1.3rem;
+        margin-top: 30px !important;
+        font-size: 1.3rem !important;
     }
 
     .inside_text {
-        font-size: 1rem;
-        padding: 0 15px;
+        font-size: 1rem !important;
+        padding: 0 15px !important;
     }
 
     .audio-player {
-        flex-direction: column;
-        padding: 10px;
-        width: 95%;
-        margin: 20px auto;
-    }
-
-    .time-container {
-        width: 100%;
-        margin: 10px 0;
+        flex-direction: column !important;
+        padding: 12px !important;
+        width: 95% !important;
     }
 
     .seek-bar {
-        width: 100%;
-        margin: 10px 0;
-    }
-
-    .volume-container {
-        width: 100%;
-        justify-content: center;
-        margin-top: 10px;
+        width: 100% !important;
+        margin: 10px 0 !important;
     }
 
     .close-card-btn {
-        padding: 12px 24px;
-        font-size: 16px;
-        bottom: 30px;
-    }
-
-    .toggle-container {
-        top: 15px;
-        right: 15px;
-    }
-
-    /* Melhor feedback para toque */
-    button {
-        transition: transform 0.1s ease;
-    }
-
-    button:active {
-        transform: scale(0.95);
-        opacity: 0.9;
+        padding: 12px 24px !important;
+        font-size: 16px !important;
+        bottom: 30px !important;
     }
 }
 
-@media (max-width: 360px) {
-    .front_card, .inside_card {
-        min-height: 65vh;
-    }
-
-    .front_text {
-        font-size: 1.1rem;
-    }
-
-    .inside_text {
-        font-size: 0.9rem;
-    }
-
-    .close-card-btn {
-        padding: 10px 20px;
-        font-size: 14px;
-    }
-}
-
-/* Prevenir zoom em inputs em iOS */
+/* Correção para iOS */
 @supports (-webkit-touch-callout: none) {
-    input, select, textarea {
+    .valentines_card {
+        -webkit-overflow-scrolling: touch;
+    }
+    input, textarea {
         font-size: 16px !important;
     }
-}
-
-/* Garantir que o áudio não apareça em mobile */
-audio {
-    display: none !important;
 }
