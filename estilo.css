@@ -80,15 +80,15 @@ body {
 
 .front_text {
     color: #A60657;
-    font-size: 20px;
+    font-size: 10px;
     margin-top: 485px;
     transition: opacity 0.5s ease;
 }
 
 .inside_text {
     color: #A60657;
-    font-size: 19px;
-    padding: 0 20px;
+    font-size: 9px;
+    padding: 0 10px;
 }
 
 .valentines_card:hover .front_card,
@@ -140,28 +140,28 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 90%;
-    max-width: 400px;
+    max-width: 300px;
     margin: 0 auto;
 }
 
 .play-button, .volume-button {
     background: none;
     border: none;
-    font-size: 20px;
+    font-size: 10px;
     cursor: pointer;
     outline: none;
-    min-width: 44px;
-    min-height: 44px;
+    min-width: 22px;
+    min-height: 422px;
 }
 
 .time-container {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
     flex: 1;
     margin: 0 10px;
     color: #333;
-    font-weight: 600;
+    font-weight: 300;
 }
 
 .current-time, .total-time {
@@ -170,7 +170,7 @@ body {
 
 .seek-bar, .volume-bar {
     appearance: none;
-    width: 40%;
+    width: 30%;
     height: 5px;
     background: #ddd;
     border-radius: 5px;
