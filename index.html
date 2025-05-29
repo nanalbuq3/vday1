@@ -17,7 +17,7 @@
         </div>
         <div class="inside_card">
             <img src="baixados (2).jfif" class="inside_img">
-                 <div class="audio-player">
+            <div class="audio-player">
                 <button class="play-button">
                     <span class="icon">▶️</span>
                 </button>
@@ -41,101 +41,106 @@
         <img src="baixados (3).jfif" class="additional_image"> 
     </div>
 
-          <div class="toggle-container">
+    <div class="toggle-container">
         <button class="toggle-dark-mode">
             <span class="icon">🌙</span>
         </button>
     </div>
     <div class="close-card-btn" id="closeCardBtn">✕ Fechar Carta</div>
     
-        <script src="scripts.js"></script>
-        <script>
-    const audio = document.getElementById("audio-player");
-    const playButton = document.querySelector(".play-button");
-    const currentTimeElem = document.querySelector(".current-time");
-    const seekBar = document.querySelector(".seek-bar");
-    const volumeBar = document.querySelector(".volume-bar");
-    const volumeIcon = document.getElementById("volume-icon");
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const card = document.querySelector('.valentines_card');
+            const closeBtn = document.getElementById('closeCardBtn');
+            const toggleDarkMode = document.querySelector('.toggle-dark-mode');
+            
+            // Função para abrir a carta
+            function openCard() {
+                card.classList.add('card-open');
+                card.classList.remove('card-closed');
+                closeBtn.style.display = 'block';
+            }
+            
+            // Função para fechar a carta
+            function closeCard() {
+                card.classList.add('card-closed');
+                card.classList.remove('card-open');
+                closeBtn.style.display = 'none';
+            }
+            
+            // Alternar entre abrir/fechar a carta
+            card.addEventListener('click', function(e) {
+                // Impede que o clique no player de áudio abra/fecha a carta
+                if (e.target.closest('.audio-player')) return;
+                
+                if (card.classList.contains('card-open')) {
+                    closeCard();
+                } else {
+                    openCard();
+                }
+            });
+            
+            // Fechar ao clicar no botão
+            closeBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                closeCard();
+            });
+            
+            // Dark Mode Toggle
+            toggleDarkMode.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+            });
+            
+            // Player de Áudio
+            const audio = document.getElementById("audio-player");
+            const playButton = document.querySelector(".play-button");
+            const currentTimeElem = document.querySelector(".current-time");
+            const seekBar = document.querySelector(".seek-bar");
+            const volumeBar = document.querySelector(".volume-bar");
+            const volumeIcon = document.getElementById("volume-icon");
 
-    // Play/Pause toggle
-    playButton.addEventListener("click", () => {
-        if (audio.paused) {
-            audio.play();
-            playButton.querySelector(".icon").textContent = "⏸️";
-        } else {
-            audio.pause();
-            playButton.querySelector(".icon").textContent = "▶️";
-        }
-    });
+            playButton.addEventListener("click", (e) => {
+                e.stopPropagation();
+                if (audio.paused) {
+                    audio.play();
+                    playButton.querySelector(".icon").textContent = "⏸️";
+                } else {
+                    audio.pause();
+                    playButton.querySelector(".icon").textContent = "▶️";
+                }
+            });
 
-    // Atualizar barra de progresso
-    audio.addEventListener("timeupdate", () => {
-        seekBar.value = (audio.currentTime / audio.duration) * 100 || 0;
-        currentTimeElem.textContent = formatTime(audio.currentTime);
-    });
+            audio.addEventListener("timeupdate", () => {
+                seekBar.value = (audio.currentTime / audio.duration) * 100 || 0;
+                currentTimeElem.textContent = formatTime(audio.currentTime);
+            });
 
-    // Buscar tempo da música manualmente
-    seekBar.addEventListener("input", () => {
-        const seekTo = (seekBar.value / 100) * audio.duration;
-        audio.currentTime = seekTo;
-    });
+            seekBar.addEventListener("input", () => {
+                const seekTo = (seekBar.value / 100) * audio.duration;
+                audio.currentTime = seekTo;
+            });
 
-    // Controle de volume
-    volumeBar.addEventListener("input", () => {
-        audio.volume = volumeBar.value;
-        updateVolumeIcon(audio.volume);
-    });
+            volumeBar.addEventListener("input", () => {
+                audio.volume = volumeBar.value;
+                updateVolumeIcon(audio.volume);
+            });
 
-    function updateVolumeIcon(volume) {
-        if (volume === 0) {
-            volumeIcon.textContent = "🔇";
-        } else if (volume < 0.5) {
-            volumeIcon.textContent = "🔉";
-        } else {
-            volumeIcon.textContent = "🔊";
-        }
-    }
+            function updateVolumeIcon(volume) {
+                if (volume === 0) {
+                    volumeIcon.textContent = "🔇";
+                } else if (volume < 0.5) {
+                    volumeIcon.textContent = "🔉";
+                } else {
+                    volumeIcon.textContent = "🔊";
+                }
+            }
 
-    function formatTime(seconds) {
-        const minutes = Math.floor(seconds / 60);
-        const secs = Math.floor(seconds % 60);
-        return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
-    }
-    // Adicione isto ao seu scripts.js ou dentro de uma tag <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const card = document.querySelector('.valentines_card');
-    const closeBtn = document.getElementById('closeCardBtn');
-    
-    // Função para fechar a carta
-    function closeCard() {
-        card.classList.remove('card-open');
-        card.classList.add('card-closed');
-        closeBtn.style.display = 'none';
-        // Resetar a carta para o estado fechado
-        const frontCard = document.querySelector('.front_card');
-        frontCard.style.transform = 'rotateY(0deg)';
-    }
-    
-    // Adicionar evento de clique ao botão de fechar
-    closeBtn.addEventListener('click', closeCard);
-    
-    // Adicionar classe quando a carta é aberta (pode ser pelo hover ou toque)
-    card.addEventListener('click', function() {
-        if (!card.classList.contains('card-open')) {
-            card.classList.add('card-open');
-            closeBtn.style.display = 'block';
-        }
-    });
-    
-    // Para dispositivos móveis, fechar ao tocar fora
-    document.addEventListener('click', function(e) {
-        if (!card.contains(e.target) && !closeBtn.contains(e.target) && 
-            card.classList.contains('card-open')) {
-            closeCard();
-        }
-    });
-});
-</script>
-
+            function formatTime(seconds) {
+                const minutes = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
+            }
+        });
+    </script>
 </body>
 </html>
