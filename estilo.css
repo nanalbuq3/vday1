@@ -1,3 +1,9 @@
+/* ===== SEU CSS ORIGINAL (INTACTO) ===== */
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+}
+
 body {
     margin: 0;
     height: 100vh;
@@ -5,117 +11,237 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Montserrat', sans-serif;
     overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+    transition: background 0.5s ease;
 }
 
 .valentines_card {
-    width: 360px;
-    height: 600px;
     position: relative;
-    perspective: 2000px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transform: perspective(2500px);
+    transition: transform 4s;
+    width: 360px;
+    margin: 0 auto;
 }
 
 .front_card, .inside_card {
-    width: 100%;
-    height: 100%;
-    background: whitesmoke;
-    border-radius: 10px;
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
+    overflow: hidden;
+    transform-origin: left;
+    margin: 20px auto;
+    padding: 16px;
+    background-color: whitesmoke;
+    text-align: center;
     box-shadow: 0 24px 40px -8px #ff1493;
-}
-
-.front_card {
-    transform-origin: left center;
+    width: 360px;
+    height: 600px;
     transition: transform 1s ease;
-    z-index: 2;
-    /* Aqui o segredo: NÃO usamos backface-visibility na frente */
 }
 
 .inside_card {
-    z-index: 1;
-    backface-visibility: hidden;
-}
-
-.card-open .front_card {
-    transform: rotateY(-180deg);
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 0;
 }
 
 .front_img {
-    width: 340px;
-    margin-top: 60px;
+    width: 320px;
+    margin-top: 50px;
     display: block;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 20px;
 }
 
 .inside_img {
-    width: 200px;
+    width: 240px;
     margin: 50px auto 20px;
     display: block;
+    border-radius: 16px;
+}
+
+.additional_image {
+    position: absolute;
+    left: 105px;
+    top: 17%;
+    transform: translateY(-40%);
+    width: 150px;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0px 5px 13px rgba(0, 0, 0, 0.9);
+    object-fit: cover;
+    transition: opacity 0.5s ease;
 }
 
 .front_text {
     color: #A60657;
-    font-size: 16px;
-    text-align: center;
-    margin-top: 485px;
+    font-size: 18px;
+    margin-top: 200px; /* Ajustado para posicionar "Feliz dia dos namorados" */
+    position: relative;
+}
+
+.envelope {
+    background: #FFE4E1;
+    padding: 20px;
+    border-radius: -5px;
+    width: 275px;
+    margin: 0 20px;
+    position: relative;
+    margin-top: -250px; /* Adicione ou ajuste esta linha */
+}
+
+.envelope .front_message {
+    font-size: 1.2em;
+    color: #8B0000;
+    font-weight: bold;
+}
+
+.envelope .heart-decor {
+    font-size: 1.5em;
+    color: #FF69B4;
 }
 
 .inside_text {
     color: #A60657;
-    font-size: 14px;
-    text-align: center;
-    margin-top: 20px;
+    font-size: 16px;
+    padding: 0 10px;
+}
+
+.valentines_card:hover .front_card,
+.valentines_card.card-open .front_card {
+    transform: rotateY(-160deg);
+}
+
+.valentines_card:hover .front_text,
+.valentines_card.card-open .front_text {
+    display: none;
+}
+
+.valentines_card:hover .front_img,
+.valentines_card.card-open .front_img {
+    display: none;
+}
+
+.valentines_card:hover .additional_image,
+.valentines_card.card-open .additional_image {
+    opacity: 0;
+}
+
+.valentines_card.card-closed .front_card {
+    transform: rotateY(0deg);
+}
+
+.valentines_card.card-closed .front_text {
+    display: block;
+}
+
+.valentines_card.card-closed .front_img {
+    display: block;
+}
+
+.valentines_card.card-closed .additional_image {
+    opacity: 1;
+}
+
+.valentines_card.card-closed .inside_card {
+    z-index: -1;
 }
 
 .audio-player {
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 10px;
-    margin: 20px auto;
+    justify-content: space-between;
     background: #fff;
-    padding: 10px 20px;
+    padding: 6px 19px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 90%;
+    max-width: 300px;
+    margin: 0 auto;
 }
 
 .play-button, .volume-button {
     background: none;
     border: none;
-    font-size: 20px;
+    font-size: 10px;
     cursor: pointer;
+    outline: none;
+    min-width: 22px;
+    min-height: 22px;
+}
+
+.time-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex: 1;
+    margin: 0 10px;
+    color: #333;
+    font-weight: 300;
+}
+
+.current-time, .total-time {
+    font-size: 13px;
 }
 
 .seek-bar, .volume-bar {
     appearance: none;
-    width: 80px;
+    width: 30%;
     height: 5px;
-    border-radius: 5px;
     background: #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: background 0.3s;
+    cursor: pointer;
 }
 
-.seek-bar::-webkit-slider-thumb, .volume-bar::-webkit-slider-thumb {
+.seek-bar::-webkit-slider-thumb, 
+.volume-bar::-webkit-slider-thumb {
     appearance: none;
-    background: #ff1493;
     width: 15px;
     height: 15px;
     border-radius: 50%;
+    background: #ff1493;
+    cursor: pointer;
 }
 
 .volume-container {
     display: flex;
     align-items: center;
     gap: 10px;
+    max-width: 100px;
 }
 
 .icon {
     font-size: 20px;
     color: #ff1493;
+}
+
+.toggle-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.toggle-dark-mode {
+    background-color: #f07bd3;
+    border: none;
+    border-radius: 50%;
+    padding: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.toggle-dark-mode:hover {
+    background-color: #a20137;
+}
+
+.toggle-dark-mode:active {
+    transform: scale(0.9);
 }
 
 .close-card-btn {
@@ -125,9 +251,123 @@ body {
     transform: translateX(-50%);
     background-color: #ff1493;
     color: white;
-    padding: 12px 24px;
+    padding: 10px 20px;
     border-radius: 25px;
-    font-weight: bold;
+    cursor: pointer;
+    z-index: 1000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     display: none;
+    font-weight: bold;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.close-card-btn:hover {
+    background-color: #d3127a;
+    transform: translateX(-50%) scale(1.05);
+}
+
+.card-open .close-card-btn {
+    display: block;
+}
+
+body.dark-mode {
+    background: #49010a;
+}
+
+.dark-mode .front_text,
+.dark-mode .inside_text,
+.dark-mode .icon {
+    color: #f017ba;
+}
+
+.dark-mode .seek-bar::-webkit-slider-thumb,
+.dark-mode .volume-bar::-webkit-slider-thumb {
+    background: #a20137;
+}
+
+/* ===== PARTE NOVA (APENAS AJUSTES MOBILE) ===== */
+@media (max-width: 768px) {
+    body {
+        height: auto !important;
+        min-height: 100vh !important;
+        padding: 20px 0 !important;
+        touch-action: manipulation;
+    }
+
+    .valentines_card {
+        width: 95vw !important;
+        height: auto !important;
+        perspective: none !important;
+    }
+
+    .front_card, .inside_card {
+        width: 95% !important;
+        height: auto !important;
+        min-height: 70vh !important;
+        padding: 15px !important;
+    }
+
+    .front_img {
+        width: 85% !important;
+        max-width: 280px !important;
+        position: relative !important;
+        margin: 20px auto !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+    }
+
+    .inside_img {
+        width: 70% !important;
+        max-width: 200px !important;
+        margin: 20px auto !important;
+    }
+
+    .additional_image {
+        position: relative !important;
+        width: 120px !important;
+        margin: 15px auto !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        display: block !important;
+    }
+
+    .front_text {
+        margin-top: 30px !important;
+        font-size: 1.3rem !important;
+    }
+
+    .inside_text {
+        font-size: 1rem !important;
+        padding: 0 15px !important;
+    }
+
+    .audio-player {
+        flex-direction: column !important;
+        padding: 12px !important;
+        width: 95% !important;
+    }
+
+    .seek-bar {
+        width: 100% !important;
+        margin: 10px 0 !important;
+    }
+
+    .close-card-btn {
+        padding: 12px 24px !important;
+        font-size: 16px !important;
+        bottom: 30px !important;
+    }
+}
+
+/* Correção para iOS */
+@supports (-webkit-touch-callout: none) {
+    .valentines_card {
+        -webkit-overflow-scrolling: touch;
+    }
+    input, textarea {
+        font-size: 16px !important;
+    }
 }
